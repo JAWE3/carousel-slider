@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #FFF;
+            color: #000;
+            line-height: 1.5;
+            font-size: 1em;
+            font-weight: 300;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+        }
+
+        h2 {
+            font-size: 2.1rem;
+        }
+
+        h3 {
+            font-size: 1.7rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        #top-text p {
+            font-size: 1.4rem;
+        }
+
+        h1,
+        footer p {
+            color: beige;
+            text-align: center;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+
+        #wrapper {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        header,
+        footer {
+            background-color: rgb(85, 134, 118);
+            padding: 1rem;
+        }
+
+        #top-text {
+            max-width: 768px;
+            padding: 2.5%;
+            margin: 0 auto;
+        }
+
+        /*  Styling til slider med Vanilla JS funktioner til skift og 
+    animation til slides med effekten slide-in-slow, enten right eller left 
+    med keyframes.
+*/
+        .slider {
+            position: relative;
+            /* pga. de to pile-ikoner, der har position:absolute */
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 95%;
+            padding: 2.5%;
+            margin: 0 2.5%;
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .left {
+            animation-name: slideLeft;
+        }
+
+        @keyframes slideLeft {
+            0% {
+                left: 100%;
+            }
+
+            100% {
+                left: 0%;
+            }
+        }
+
+        .right {
+            animation-name: slideRight;
+        }
+
+        @keyframes slideRight {
+            0% {
+                right: 100%;
+            }
+
+            100% {
+                right: 0%;
+            }
+        }
+
+        .left,
+        .right {
+            animation-duration: 1000ms;
+        }
+
+        .slide.active figure {
+            width: 30%;
+            margin: 1.5%;
+            position: relative;
+        }
+
+        .slide figure figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: #FFF;
+            padding: 0.5rem;
+            background-color: RGBa(0, 0, 0, 0.7);
+            visibility: hidden;
+        }
+
+        .slide figure:hover figcaption {
+            visibility: visible;
+        }
+
+        .prev,
+        .next {
+            font-size: 3rem;
+            color: #b1b1b1;
+            position: absolute;
+            top: 43%;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+
+        }
+
+        .prev:hover,
+        .next:hover {
+            color: RGBa(0, 0, 0, 0.7);
+        }
+    </style>
+    <script defer src="slider.js"></script>
+    <title>Carousel Slider - Multiple Images - HTML - CSS - JavaScript Vanilla</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Carousel Slider - HTML, CSS og Vanilla JS</h1>
+        </header>
+        <main>
+            <div id="top-text">
+                <h2>Carousel slider - 3 billeder ad gangen</h2>
+                <p>Billederne har også en figcaption der kommer frem, når man holder musen over hvert enkelt billede.
+                    Eller når man trykker på skærmen på en tablet eller en smartphone.</p>
+                <p>Billederne slider ind på siden fra enten højre eller venstre, ved tryk på hhv. pilen til højre eller
+                    pilen til venstre med en forsinkelse på 1 sekund (1000 millisekunder).</p>
+            </div><!-- top-text ends -->
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide active">
+                        <figure>
+                            <img src="images/orme-muffins.jpg" alt="Muffins med orme">
+                            <figcaption>
+                                <h4>Orme Muffins</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/orme-gremolata.jpg" alt="Gremolata med orme">
+                            <figcaption>
+                                <h4>Orme Gremolata</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/orme-boller.jpg" alt="Boller med orme">
+                            <figcaption>
+                                <h4>Orme Boller</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                    </div><!-- slide one ends -->
+                    <div class="slide">
+                        <figure>
+                            <img src="images/bille-hummus.jpg" alt="Hummus med biller">
+                            <figcaption>
+                                <h4>Bille Hummus</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/snegle-brownies.jpg" alt="Brownies med snegle">
+                            <figcaption>
+                                <h4>Snegle Brownies</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/larve-bulgur.jpg" alt="Bulgur med larver">
+                            <figcaption>
+                                <h4>Larve Bulgur</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                            </figcaption>
+                        </figure>
+                    </div><!-- slide two ends -->
+                </div><!-- slides ends -->
+                <div class="prev"><i class="fas fa-chevron-circle-left"></i></div>
+                <div class="next"><i class="fas fa-chevron-circle-right"></i></div>
+            </div><!-- slider ends -->
+        </main>
+        <footer>
+            <p>Copyright &copy; 2021 - Jens Andersen - NEXT København - Medie</p>
+        </footer>
+    </div><!-- wrapper end -->
+    <script>
+        const prev = document.querySelector(".prev");
+        const next = document.querySelector(".next");
+        const slides = document.querySelectorAll(".slide");
+        let current = 0;
+
+        next.addEventListener("click", function () {
+            slides[current].classList.remove("active", "left", "right");
+            current++;
+            if (current === slides.length) {
+                current = 0;
+            }
+            slides[current].classList.add("active", "left");
+        });
+
+        prev.addEventListener("click", function () {
+            slides[current].classList.remove("active", "right", "left");
+            current--;
+            if (current < 0) {
+                current = (slides.length - 1);
+            }
+            slides[current].classList.add("active", "right");
+        });
+    </script>
+</body>
+
+</html>
